@@ -1,0 +1,78 @@
+rei<-read.csv("rei.csv", header=T)
+
+head(rei)
+
+names (rei)
+
+names(rei)<-c("id","gender","city","clothing","shoes","camp","cycle","pct_rei","service","select","quality")
+
+colnames(rei)[1]< "id"
+
+complete.cases(rei)
+
+str(rei)
+
+summary(rei)
+
+temp_city<-table(rei$city)
+
+
+pie(temp_city)
+
+pie(temp_gender, c("male", "female"), col=c("blue", "red"))
+
+pie(temp_gender, c("male", "female"), col=c("blue", "red"), main="Gender")
+
+
+barplot(temp_city, names.arg=rownames(temp_city))
+
+barplot(temp_gender, names.arg=c("male", "female"), ylim=c(0, 150))
+
+barplot(temp_gender, names.arg=c("male", "female"), ylim=c(0, 150), ylab="Count of Items")
+
+barplot(temp_gender, names.arg=c("male", "female"), ylim=c(0, 150), ylab="Count of Items", col=c("blue", "red"))
+
+barplot(temp_gender, names.arg=c("male", "female"), ylim=c(0, 150), ylab="Count of Items", col=c("blue", "red"), main="Gender")
+
+
+hist(rei$service, main="Service")
+
+hist(rei$select, main="Selection")
+
+hist(rei$quality, main="Quality")
+
+
+new$pct_rei[new$pct_rei>100]=NA
+
+new$service[new$service>5]=NA
+
+new$select[new$select>5]=NA
+
+new$quality[new$quality>5]=NA
+
+
+new$pct_rei[new$pct_rei>100 | new$pct_rei<0]=NA
+
+
+plot(density(rei$pct_rei, na.rm=T))
+
+
+new$pct_rei[is.na(new$pct_rei)]=mean(new$pct_rei, na.rm=T)
+
+new$service[is.na(new$service)]=mean(new$service, na.rm=T)
+
+new$quality[is.na(new$quality)]=mean(new$quality, na.rm=T)
+
+summary(new$pct_rei)
+
+install.packages("DMwR")
+
+library(DMwR)
+
+centralImputation(new)
+
+knnImputation(new)
+
+new$npct_rei<- new$pct_rei/100
+
+new$nlikert<- new$service+ new$select+ new$quality
