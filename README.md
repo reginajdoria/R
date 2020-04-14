@@ -1,2 +1,2 @@
 # R
-This is a workplace for my to store R codes I've been working on during graduate school.
+A place to store my R codes during graduate school
