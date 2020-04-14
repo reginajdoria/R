@@ -65,6 +65,7 @@ new$quality[is.na(new$quality)]=mean(new$quality, na.rm=T)
 
 summary(new$pct_rei)
 
+
 install.packages("DMwR")
 
 library(DMwR)
@@ -72,6 +73,7 @@ library(DMwR)
 centralImputation(new)
 
 knnImputation(new)
+
 
 new$npct_rei<- new$pct_rei/100
 
