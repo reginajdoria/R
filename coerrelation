@@ -1,0 +1,32 @@
+avery<-read.csv("avery.csv", header=T)
+
+cor(avery$conf4, avery$numpurch)
+
+cor(avery$conf4, avery$numpurch, method="pearson")
+
+m<-avery[,c(5, 6, 7, 8, 15)]
+str(m)
+
+m<-avery[,c(5:8, 15)]
+str(m)
+
+which(colnames(avery)=="numpurch")
+
+cor(m)
+
+cor(m, method="pearson")
+
+cor.test(avery$conf4, avery$numpurch)
+
+install.packages("Hmisc")
+library(Hmisc)
+
+res<-rcorr(as.matrix(m))
+res
+
+plot(m)
+
+install.packages(PerformanceAnalytics")
+library(PerformanceAnalytics)
+
+chart.Correlation(m)
