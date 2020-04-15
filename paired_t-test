@@ -1,0 +1,3 @@
+avery<-read.csv("avery.csv")
+
+t.test(avery$conf6, avery$conf1, paired=T)
