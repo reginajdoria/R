@@ -1,0 +1,26 @@
+library(cluster)
+
+placeratings<-read.csv("placeratings.csv", header=T, stringsAsFactors=FALSE)
+
+tp<-placeratings[2:10]
+
+placeratings<-na.omit(tp)
+
+hclhclust(dist(placeratings)^2, method="ward.D")
+
+plot(hcl,hang=-0.1, xlab="Place Rating", ylab="Distance")
+
+rect.hclust(hcl, k=3)
+
+cutree(hcl, h=3)
+
+colnames(placeratings)[1]<-"city"
+
+g1<-subset(placeratings, city=='Seattle')
+summary(g1)
+
+g2<-subset(placeratings, city=='Danbury' | city=='Nashua' | city=='BostonN' | city=='C_NJ')
+summary(g2)
+
+g3<-subset(placeratings, city=='SanFran' | city=='Denver' | city=='Boston' | city=='StPaul' | city=='Pitt')
+summary(g3)
