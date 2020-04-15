@@ -1,0 +1,5 @@
+wage<-("wage.csv", header=T)
+
+res<-lm(wage~education+experience+gender+marriage+kids+white, data=wage)
+
+summary(res)
