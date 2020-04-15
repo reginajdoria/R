@@ -1,0 +1,30 @@
+avery<-read.csv("avery.csv", header=T)
+
+
+xtabs(~gender+everybuy, data=avery)
+
+
+avery$gender<-as.factor(avery$gender)
+
+levels(avery$gender)[levels(avery$gender)=="1"]<-"Male"
+
+levels(avery$gender)[levels(avery$gender)=="2"]<-"Female"
+
+
+temp<-xtabs(~gender+everybuy, data=avery)
+temp
+
+
+temp2<-addmargins(temp, FUN = list(Total=sum)
+temp2
+
+temp<-xtabs(~gender+everbuy, data=avery)
+chisq.test(temp)
+
+
+prop.table(temp,2)
+
+prop.table(temp,1)
+
+prop.table(temp)
+
