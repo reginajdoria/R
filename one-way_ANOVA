@@ -1,9 +1,9 @@
-coffee<-read.csv("coffee.csv", header = T)
+coffee<-read.csv("coffee.csv", header=T)
 
 coffee$Shift<-factor(coffee$Shift)
 str(coffee)
 
-res.anova<-aov(Cups~Shift, data = coffee)
+res.anova<-aov(Cups~Shift, data=coffee)
 summary(res.anova)
 
 tukeyHSD(res.anova)
