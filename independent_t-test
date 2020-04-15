@@ -1,0 +1,5 @@
+avery<-read.csv("avery.csv", header=T)
+
+var.test(avery$shiptime~avery$gender)
+
+t.test(avery$shiptime~avery$gender, var.equal=T)
