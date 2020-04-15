@@ -1,5 +1,5 @@
-install.packages("arules"
-library(arules
+install.packages("arules")
+library(arules)
 
 install.packages("arulesViz")
 library(arulesViz)
