@@ -1,0 +1,17 @@
+install.packages("arules"
+library(arules
+
+install.packages("arulesViz")
+library(arulesViz)
+
+basket<read.csv("mbasket.csv", header=T, stringsAsFactors=FALSE)
+
+grep("fruitveg", colnames(basket))
+
+dt<-as.matrix(basket[8:18])
+
+rules.all<-apriori(dt=list(minlen=2, supp=0.1, conf=0.1))
+
+inspect(sort(rules.all, by="lift"))
+
+plot(rules.all, method="graoh", main="Basket Analysis")
